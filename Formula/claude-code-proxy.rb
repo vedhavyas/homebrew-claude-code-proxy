@@ -1,27 +1,20 @@
 class ClaudeCodeProxy < Formula
-  desc "Local proxy: Claude Code to ChatGPT subscription via Codex Responses API"
-  homepage "https://github.com/raine/claude-code-proxy"
-  version "0.0.5"
+  desc "Local proxy: Claude Code to ChatGPT subscription via Codex Responses API (patched fork)"
+  homepage "https://github.com/vedhavyas/claude-code-proxy"
+  version "0.0.5-fix1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/raine/claude-code-proxy/releases/download/v0.0.5/claude-code-proxy-darwin-arm64.tar.gz"
-      sha256 "dd20c65db34591935a51410659eb5b724f18f7a4862a0260a790b4ea448fadee"
+      url "https://github.com/vedhavyas/claude-code-proxy/releases/download/v0.0.5-fix1/claude-code-proxy-darwin-arm64.tar.gz"
+      sha256 "e938400ad05386c887ba0a9a78218a9150d45db4a9030f982bbff3988a7c4907"
     else
-      url "https://github.com/raine/claude-code-proxy/releases/download/v0.0.5/claude-code-proxy-darwin-amd64.tar.gz"
-      sha256 "39edde9f6b5886971c42c9b8147da667ec8980273892868f6a8811d82564c3df"
+      odie "This fork only builds darwin-arm64. Use the upstream raine/claude-code-proxy tap for intel Macs."
     end
   end
 
   on_linux do
-    if Hardware::CPU.arm?
-      url "https://github.com/raine/claude-code-proxy/releases/download/v0.0.5/claude-code-proxy-linux-arm64.tar.gz"
-      sha256 "5baf304bedbf2101785df8c7d225469d9da03b64110206a7171be045c9600d9f"
-    else
-      url "https://github.com/raine/claude-code-proxy/releases/download/v0.0.5/claude-code-proxy-linux-amd64.tar.gz"
-      sha256 "68b8f8808c287eead274d8c10ad53560a10022f14a550fb65977778e856d7f72"
-    end
+    odie "This fork only builds darwin-arm64. Use the upstream raine/claude-code-proxy tap for Linux."
   end
 
   def install
@@ -29,6 +22,6 @@ class ClaudeCodeProxy < Formula
   end
 
   test do
-    assert_match version.to_s, shell_output("\#{bin}/claude-code-proxy --version")
+    assert_match version.to_s.split("-").first, shell_output("#{bin}/claude-code-proxy --version")
   end
 end
