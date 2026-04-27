@@ -1,13 +1,13 @@
 class ClaudeCodeProxy < Formula
   desc "Local proxy: Claude Code to ChatGPT subscription via Codex Responses API (patched fork)"
   homepage "https://github.com/vedhavyas/claude-code-proxy"
-  version "0.0.7-fix2"
+  version "0.0.7-fix3"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/vedhavyas/claude-code-proxy/releases/download/v0.0.7-fix2/claude-code-proxy-darwin-arm64.tar.gz"
-      sha256 "2f621145e2a9160244b3692a5a21ee6e2c568c22e5c317bc9cef990c83e66d98"
+      url "https://github.com/vedhavyas/claude-code-proxy/releases/download/v0.0.7-fix3/claude-code-proxy-darwin-arm64.tar.gz"
+      sha256 "70f1274d2701ff0dc1c133fd3d1cd30dd24bfd592a45d69fcd07750c4a8a1e7d"
     else
       odie "This fork only builds darwin-arm64. Use the upstream raine/claude-code-proxy tap for intel Macs."
     end
